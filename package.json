@@ -1,5 +1,5 @@
 {
-  "name": "rycyp-next",
+  "name": "havyt-next",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,6 @@
   "dependencies": {
     "@prisma/client": "2.29.1",
     "@reach/alert": "^0.14.0",
-    "add": "^2.0.6",
     "classnames": "^2.2.6",
     "next": "^11.1.0",
     "next-seo": "^4.22.0",
