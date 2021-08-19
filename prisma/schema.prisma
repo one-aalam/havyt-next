@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id        String   @id @default(uuid())
+  username  String   @unique
+  email     String?  @unique
+  avatar    String?
+  role      UserRole @default(USER)
+  likes     Recipe[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Recipe Recipe[] @relation("_RecipeToSubmitter")
+}
+
+enum UserRole {
+  USER
+  ADMIN
+}
+
+enum RecipeCategoryType {
+  CUISINE
+  COURSE
+}
+
+model RecipeCategory {
+  id               String             @id @default(uuid())
+  name             String
+  type             RecipeCategoryType
+  recipesByCuisine Recipe[]           @relation("_RecipeToCuisine")
+  recipesByCourse  Recipe[]           @relation("_RecipeToCourse")
+
+  @@unique([name])
+}
+
+model Recipe {
+  id              String         @id @default(uuid())
+  name            String
+  description     String         @default("") @db.VarChar(280) // So you can fit it in a tweet
+  ingredients     String[]
+  directions      String[]
+  serves          Int            @default(2)
+  prepTime        Int            @default(0)
+  cookingTime     Int
+  imageUrl        String         @default("")
+  cuisine         RecipeCategory @relation("_RecipeToCuisine", fields: [recipeCuisineId], references: [id])
+  course          RecipeCategory @relation("_RecipeToCourse", fields: [recipeCourseId], references: [id])
+  source          String?
+  tags            String[]
+  likedBy         User[]
+  submittedBy     User           @relation("_RecipeToSubmitter", fields: [userId], references: [id])
+  recipeCuisineId String
+  recipeCourseId  String
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  userId          String
+}
