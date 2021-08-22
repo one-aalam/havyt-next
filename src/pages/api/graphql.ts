@@ -5,10 +5,12 @@ import {
     shouldRenderGraphiQL,
 } from 'graphql-helix'
 import { NextApiRequest, NextApiResponse } from 'next/types'
+import { schema } from '~/lib/graphql/schema'
+import { createContext } from '~/lib/graphql/context'
 
 const graphql = async (req: NextApiRequest, res: NextApiResponse) => {
 
-    // We don't wanna pass everything we're getting to the GQL processor (Helix)
+    // We don't wanna pass everything we're getting to the GQL processor (Helix). Let's do a bit of normalization
     const gqlReq = {
         body: req.body,
         headers: req.headers,
@@ -26,11 +28,12 @@ const graphql = async (req: NextApiRequest, res: NextApiResponse) => {
 
         // Get the result
         const result = await processRequest({
-            schema: null, // No Schemas yet, we'll come to this
+            schema,
             query,
             variables,
             operationName,
             request: gqlReq,
+            contextFactory: () => createContext()
         });
 
         // HTTP response? No Websocket? No SSE?
@@ -44,6 +47,7 @@ const graphql = async (req: NextApiRequest, res: NextApiResponse) => {
             res.json(result.payload);
         } else {
             // TODO
+            res.send({ errors: [{ message: 'Not Supported in this App' }] });
         }
     }
 
