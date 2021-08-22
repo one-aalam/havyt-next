@@ -1,5 +1,17 @@
-import { createClient } from 'urql';
+import { NextPage } from 'next'
+import { dedupExchange, cacheExchange, fetchExchange } from '@urql/core'
+import { withUrqlClient } from 'next-urql'
 
-export const client = createClient({
-    url:  process.env.GRAPHQL_ENDPOINT || 'http://localhost:3000/api/graphql',
-})
+const UrqlProvider = (Page: NextPage) => withUrqlClient((ssrExchange) => ({
+    // ...add your Client options here
+    url: process.env.GRAPHQL_ENDPOINT || 'http://localhost:3000/api/graphql',
+    exchanges: [
+        dedupExchange,
+        cacheExchange,
+        ssrExchange,
+        fetchExchange
+    ],
+  }))(Page)
+
+
+export default UrqlProvider

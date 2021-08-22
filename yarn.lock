@@ -3012,6 +3012,13 @@ next-seo@^4.22.0:
   resolved "https://registry.yarnpkg.com/next-seo/-/next-seo-4.22.0.tgz#5487080bf6f84031bc4686f9e37ecaad78f8cc5d"
   integrity sha512-W4WBkSGIHRPHqIjfUy72Xv8Zx4q38LJLIcxkXlJecLSruQhtPGx8z2H3ct00D9uLbk9Bj2HbYVS5fewqx8ki2g==
 
+next-urql@^3.2.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/next-urql/-/next-urql-3.2.0.tgz#9e6fb9eece5b6f2793ff503ce1659af64654fd3c"
+  integrity sha512-qFfaMagYu5fIrdSxF8+FUAukkP0pvfCWQbz+a1QV2vtqgB3OHccLqsD9iUpuKNfBkgKKLoMlnpSfKKYFklKO7Q==
+  dependencies:
+    react-ssr-prepass "^1.4.0"
+
 next@^11.1.0:
   version "11.1.0"
   resolved "https://registry.yarnpkg.com/next/-/next-11.1.0.tgz#767d4c4fa0b9b0c768cdbd6c9f03dd86b5d701c0"
@@ -3786,7 +3793,7 @@ react-icons@^4.2.0:
   resolved "https://registry.yarnpkg.com/react-icons/-/react-icons-4.2.0.tgz#6dda80c8a8f338ff96a1851424d63083282630d0"
   integrity sha512-rmzEDFt+AVXRzD7zDE21gcxyBizD/3NqjbX6cmViAgdqfJ2UiLer8927/QhhrXQV7dEj/1EGuOTPp7JnLYVJKQ==
 
-react-is@17.0.2:
+react-is@17.0.2, react-is@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
@@ -3800,6 +3807,11 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
+
+react-ssr-prepass@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-ssr-prepass/-/react-ssr-prepass-1.4.0.tgz#33a3db19414f0f8f9f3f781c88f760ae366b4f51"
+  integrity sha512-0SzdmiQUtHvhxCabHg9BI/pkJfijGkQ0jQL6fC4YFy7idaDOuaiQLsajIkkNxffFXtJFHIWFITlve2WB88e0Jw==
 
 react@^17.0.2:
   version "17.0.2"
