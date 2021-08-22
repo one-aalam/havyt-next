@@ -7,7 +7,7 @@ type RecipeCategory = {
 }
 
 
-const allRecipeCategoriesQuery = gql`
+const RECIPE_CATEGORIES_QUERY = gql`
   query {
     allRecipeCategories {
         id
@@ -22,7 +22,7 @@ type AllRecipeCategoriesData = {
 
 const RecipeCategoryList: FunctionComponent = () => {
     const [ result ] = useQuery<AllRecipeCategoriesData>({
-      query: allRecipeCategoriesQuery
+      query: RECIPE_CATEGORIES_QUERY
     })
 
     const { data, fetching, error } = result
