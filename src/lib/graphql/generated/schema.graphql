@@ -3,12 +3,12 @@
 
 
 type Query {
-  recipeCategories: [RecipeCategory!]!
+  allRecipeCategories: [RecipeCategory!]!
 }
 
 type RecipeCategory {
-  id: String
-  name: String
+  id: ID!
+  name: String!
   type: RecipeCategoryType
 }
 

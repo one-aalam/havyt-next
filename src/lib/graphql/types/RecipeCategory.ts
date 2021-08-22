@@ -1,24 +1,21 @@
 import { objectType, queryType, enumType } from 'nexus'
+import { RecipeCategory, RecipeCategoryType } from 'nexus-prisma'
 
-export const recipeCategoryObject = objectType({
-    name: 'RecipeCategory',
+export const RecipeCategoryObject = objectType({
+    name: RecipeCategory.$name,
+    description: RecipeCategory.$description,
     definition(t) {
-        t.string('id')
-        t.string('name')
-        t.field('type', { type: RecipeCategoryType })
+        t.field(RecipeCategory.id)
+        t.field(RecipeCategory.name)
+        t.field('type', { type: enumType(RecipeCategoryType) })
     }
 })
 
-const RecipeCategoryType = enumType({
-    name: 'RecipeCategoryType',
-    members: ['CUISINE', 'COURSE'],
-})
-
-export const recipeCategoryQuery = queryType({
+export const RecipeCategoriesQuery = queryType({
     definition(t) {
-      t.nonNull.list.nonNull.field('recipeCategories', {
+      t.nonNull.list.nonNull.field('allRecipeCategories', {
           type: 'RecipeCategory',
-            resolve(_, __, ctx) {
+            resolve(_parent, __args, ctx) {
                 return ctx.prisma.recipeCategory.findMany({})
             },
       })
