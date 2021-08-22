@@ -16,6 +16,8 @@
     "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
     "generate:prisma": "prisma generate",
     "generate:nexus": "npm run ts-node --transpile-only ./src/lib/graphql/schema",
+    "generate:client-types": "graphql-codegen --config codegen.yml",
+    "dev:client-types": "graphql-codegen --config codegen.yml --watch",
     "postinstall": "npm run generate"
   },
   "dependencies": {
@@ -36,6 +38,10 @@
     "urql": "^2.0.4"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "2.1.1",
+    "@graphql-codegen/typescript": "2.1.0",
+    "@graphql-codegen/typescript-operations": "2.1.0",
+    "@graphql-codegen/typescript-urql": "^3.1.0",
     "@next/eslint-plugin-next": "^11.1.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/forms": "^0.3.2",
