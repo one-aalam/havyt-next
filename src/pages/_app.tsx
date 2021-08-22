@@ -5,9 +5,11 @@ import React from 'react'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { DefaultSeo } from 'next-seo'
+import { Provider as UrqlProvider } from 'urql'
 
 import SEO from '../../next-seo.config'
 import { MessageProvider } from '~/lib/message'
+import { client } from '~/lib/graphql/client'
 
 function MyApp({ Component, pageProps }: AppProps) {
   const pageMeta = (Component as any)?.defaultProps?.meta || {}
@@ -19,9 +21,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta content="width=device-width, initial-scale=1" name="viewport" />
       </Head>
       <DefaultSeo {...pageSEO} />
-      <MessageProvider>
-        <Component {...pageProps} />
-      </MessageProvider>
+      <UrqlProvider value={client}>
+        <MessageProvider>
+            <Component {...pageProps} />
+        </MessageProvider>
+      </UrqlProvider>
     </React.Fragment>
   )
 }
