@@ -3,5 +3,16 @@
 
 
 type Query {
-  ok: Boolean!
+  recipeCategories: [RecipeCategory!]!
+}
+
+type RecipeCategory {
+  id: String
+  name: String
+  type: RecipeCategoryType
+}
+
+enum RecipeCategoryType {
+  COURSE
+  CUISINE
 }
