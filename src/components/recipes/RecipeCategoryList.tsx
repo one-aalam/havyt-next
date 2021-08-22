@@ -1,20 +1,11 @@
 import { FunctionComponent } from 'react'
-import { useQuery, gql } from 'urql'
+import { useQuery } from 'urql'
+import { RECIPE_CATEGORIES_QUERY } from '~/lib/graphql/queries'
 
 type RecipeCategory = {
     id: string
     name: string
 }
-
-
-const RECIPE_CATEGORIES_QUERY = gql`
-  query {
-    allRecipeCategories {
-        id
-        name
-    }
-  }
-`
 
 type AllRecipeCategoriesData = {
     allRecipeCategories: Array<RecipeCategory>
