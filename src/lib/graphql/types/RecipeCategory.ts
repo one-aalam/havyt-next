@@ -13,6 +13,8 @@ export const RecipeCategoryObject = objectType({
         t.field(RecipeCategory.id)
         t.field(RecipeCategory.name)
         t.field('type', { type: RecipeCategoryEnumType })
+        t.field(RecipeCategory.recipesByCuisine)
+        t.field(RecipeCategory.recipesByCourse)
     }
 })
 
