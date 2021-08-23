@@ -3,11 +3,20 @@
 
 
 type Mutation {
+  """Create a new recipe"""
+  createRecipe(data: RecipeCreateInput): Recipe
+
   """Create a new recipe category"""
   createRecipeCategory(data: RecipeCategoryCreateInput): RecipeCategory
 
+  """Remove the provided recipe"""
+  deleteRecipe(id: ID!): Recipe
+
   """Remove the provided recipe category"""
   deleteRecipeCategory(id: ID!): RecipeCategory
+
+  """Update an existing recipe"""
+  updateRecipe(data: RecipeUpdateInput, id: ID!): Recipe
 
   """Update an existing recipe category"""
   updateRecipeCategory(data: RecipeCategoryUpdateInput, id: ID!): RecipeCategory
@@ -15,9 +24,28 @@ type Mutation {
 
 type Query {
   allRecipeCategories: [RecipeCategory!]
+  allRecipes: [Recipe!]!
+
+  """Retrieve single recipe by the provided ID"""
+  recipe(id: ID!): Recipe
 
   """Retrieve single recipe category by the provided ID"""
   recipeCategory(id: ID!): RecipeCategory
+}
+
+type Recipe {
+  cookingTime: Int!
+  course: RecipeCategory!
+  cuisine: RecipeCategory!
+  description: String!
+  directions: [String!]!
+  id: ID!
+  ingredients: [String!]!
+  name: String!
+  prepTime: Int!
+  serves: Int!
+  source: String
+  tags: [String!]!
 }
 
 type RecipeCategory {
@@ -41,4 +69,36 @@ enum RecipeCategoryType {
 input RecipeCategoryUpdateInput {
   name: String
   type: RecipeCategoryType
+}
+
+"""Input type for recipe creation"""
+input RecipeCreateInput {
+  cookingTime: Int!
+  description: String
+  directions: [String!]
+  ingredients: [String!]
+  name: String!
+  prepTime: Int
+  recipeCourseId: ID!
+  recipeCuisineId: ID!
+  serves: Int!
+  source: String
+  tags: [String]
+  userId: ID!
+}
+
+"""Input type for recipe updates"""
+input RecipeUpdateInput {
+  cookingTime: Int
+  description: String
+  directions: [String]
+  ingredients: [String]
+  name: String
+  prepTime: Int
+  recipeCourseId: ID
+  recipeCuisineId: ID
+  serves: Int
+  source: String
+  tags: [String]
+  userId: ID
 }
