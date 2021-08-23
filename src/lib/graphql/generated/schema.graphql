@@ -24,7 +24,7 @@ type Mutation {
 
 type Query {
   allRecipeCategories: [RecipeCategory!]
-  allRecipes: [Recipe!]!
+  allRecipes(skip: Int, take: Int): [Recipe!]!
 
   """Retrieve single recipe by the provided ID"""
   recipe(id: ID!): Recipe

@@ -1,4 +1,4 @@
-import { objectType, extendType, queryField, mutationField, inputObjectType, nonNull, arg, idArg } from 'nexus'
+import { objectType, extendType, queryField, mutationField, inputObjectType, nonNull, arg, idArg, intArg } from 'nexus'
 import { Recipe } from 'nexus-prisma'
 /**
  * Base types
@@ -29,10 +29,17 @@ export const RecipeObject = objectType({
  export const RecipesQuery = extendType({
     type: 'Query',
     definition(t) {
-        t.nonNull.list.nonNull.field('allRecipes',{
+        t.nonNull.list.nonNull.field('allRecipes', {
             type: 'Recipe',
-            resolve(_parent, __args, ctx) {
-                return ctx.prisma.recipe.findMany({})
+            args: {
+                skip: intArg(),
+                take: intArg(),
+            },
+            resolve(_parent, args, ctx) {
+                return ctx.prisma.recipe.findMany({
+                    skip: args.skip || undefined,
+                    take: args.take || undefined,
+                })
             },
         })
     }
