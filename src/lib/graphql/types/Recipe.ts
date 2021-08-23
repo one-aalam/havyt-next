@@ -1,8 +1,10 @@
-import { objectType, extendType, queryField, mutationField, inputObjectType, nonNull, arg, idArg, intArg } from 'nexus'
+import { objectType, extendType, queryField, mutationField, inputObjectType, nonNull, arg, idArg, intArg, asNexusMethod } from 'nexus'
 import { Recipe } from 'nexus-prisma'
+import { DateTimeResolver } from 'graphql-scalars'
 /**
  * Base types
  */
+export const DateTime = asNexusMethod(DateTimeResolver, 'date')
 
 export const RecipeObject = objectType({
     name: Recipe.$name,
@@ -20,6 +22,8 @@ export const RecipeObject = objectType({
         t.field(Recipe.course)
         t.field(Recipe.source)
         t.field(Recipe.tags)
+        t.field(Recipe.createdAt)
+        t.field(Recipe.updatedAt)
     }
 })
 
