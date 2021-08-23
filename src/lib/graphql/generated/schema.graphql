@@ -2,8 +2,22 @@
 ### Do not make changes to this file directly
 
 
+type Mutation {
+  """Create a new recipe category"""
+  createRecipeCategory(data: RecipeCategoryCreateInput): RecipeCategory
+
+  """Remove the provided recipe category"""
+  deleteRecipeCategory(id: ID!): RecipeCategory
+
+  """Update an existing recipe category"""
+  updateRecipeCategory(data: RecipeCategoryUpdateInput, id: ID!): RecipeCategory
+}
+
 type Query {
-  allRecipeCategories: [RecipeCategory!]!
+  allRecipeCategories: [RecipeCategory!]
+
+  """Retrieve single recipe category by the provided ID"""
+  recipeCategory(id: ID!): RecipeCategory
 }
 
 type RecipeCategory {
@@ -12,7 +26,19 @@ type RecipeCategory {
   type: RecipeCategoryType
 }
 
+"""Input type for recipe category creation"""
+input RecipeCategoryCreateInput {
+  name: String!
+  type: RecipeCategoryType!
+}
+
 enum RecipeCategoryType {
   COURSE
   CUISINE
+}
+
+"""Input type for recipe category updates"""
+input RecipeCategoryUpdateInput {
+  name: String
+  type: RecipeCategoryType
 }
