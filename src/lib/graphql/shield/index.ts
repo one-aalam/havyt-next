@@ -5,12 +5,7 @@ export const isAuthenticated = rule({ cache: 'contextual' })(async (parent, args
 })
 
 export const isAdmin = rule({ cache: 'contextual' })(async (parent, args, ctx, info) => {
-    const user = await ctx.prisma.user.findUnique({
-        where: {
-            email: ctx.user.email
-        }
-    })
-    return user.role === 'ADMIN'
+    return ctx.user.role === 'ADMIN'
 })
 
 export const permissions = shield({

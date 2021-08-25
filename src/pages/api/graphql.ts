@@ -31,7 +31,7 @@ const graphql = async (req: NextApiRequest, res: NextApiResponse) => {
             variables,
             operationName,
             request: gqlReq,
-            contextFactory: () => createContext({
+            contextFactory: async() => await createContext({
                 req,
                 res
             })

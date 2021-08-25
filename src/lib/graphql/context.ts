@@ -8,10 +8,16 @@ export type Context = {
     prisma: PrismaClient
 }
 
-export function createContext({ req, res}): Context {
+export async function createContext({ req, res}): Promise<Context> {
     const session = getSession(req, res)
+    const user = session?.user ? await prisma.user.findUnique({
+        where: {
+            email: session.user.email
+        }
+    }) : null
+
     return {
-      user: session?.user || null,
+      user,
       accessToken: session?.accessToken || '',
       prisma
     }
