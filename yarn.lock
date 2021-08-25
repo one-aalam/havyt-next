@@ -506,7 +506,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@babel/runtime@^7.0.0":
+"@babel/runtime@^7.0.0", "@babel/runtime@^7.10.5":
   version "7.15.3"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.15.3.tgz#2e1c2880ca118e5b2f9988322bd8a7656a32502b"
   integrity sha512-OvwMLqNXkCXSz1kSm58sEsNuhqOx/fKpnUnKnFB5v8uDda5bLNEHNgKPvhDN6IU0LDcnHQ90LlJ0Q6jnyBSIBA==
@@ -781,6 +781,18 @@
     tslib "~2.3.0"
     value-or-promise "1.0.10"
 
+"@graphql-tools/delegate@^8.1.1":
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/delegate/-/delegate-8.1.1.tgz#d20e6d81a2900b1c8a69c2c0a3a8a0df2f9030c2"
+  integrity sha512-Vttd0nfYTqRnRMKLvk8s4cIi9U+OMXGc9CMZAlKkHrBJ6dGXjdSM+4n3p9rfWZc/FtbVk1FnNS4IFyMeKwFuxA==
+  dependencies:
+    "@graphql-tools/batch-execute" "^8.0.5"
+    "@graphql-tools/schema" "^8.1.2"
+    "@graphql-tools/utils" "^8.1.2"
+    dataloader "2.0.0"
+    tslib "~2.3.0"
+    value-or-promise "1.0.10"
+
 "@graphql-tools/git-loader@^7.0.5":
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/@graphql-tools/git-loader/-/git-loader-7.0.5.tgz#b1000206eb48bc3d63d32f5e6cc3428d0ac0b691"
@@ -960,6 +972,13 @@
   version "8.1.1"
   resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.1.1.tgz#2ef056a1d6e1e909085e1115d3bb48f890c2a2b6"
   integrity sha512-QbFNoBmBiZ+ej4y6mOv8Ba4lNhcrTEKXAhZ0f74AhdEXi7b9xbGUH/slO5JaSyp85sGQYIPmxjRPpXBjLklbmw==
+  dependencies:
+    tslib "~2.3.0"
+
+"@graphql-tools/utils@^8.1.2":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/@graphql-tools/utils/-/utils-8.1.2.tgz#a376259fafbca7532fda657e3abeec23b545e5d3"
+  integrity sha512-3G+NIBR5mHjPm78jAD0l07JRE0XH+lr9m7yL/wl69jAzK0Jr/H+/Ok4ljEolI70iglz+ZhIShVPAwyesF6rnFg==
   dependencies:
     tslib "~2.3.0"
 
@@ -1420,6 +1439,11 @@
   integrity sha512-qn1LkcFEKK8RPp459jkjzsfpbsx36BBt3oC3pITYtkoBw/aVX+EZFa5j3ThCRTNpLFvIMr5dSTD4RaMdilIOpA==
   dependencies:
     "@types/node" "*"
+
+"@types/yup@0.29.11":
+  version "0.29.11"
+  resolved "https://registry.yarnpkg.com/@types/yup/-/yup-0.29.11.tgz#d654a112973f5e004bf8438122bd7e56a8e5cd7e"
+  integrity sha512-9cwk3c87qQKZrT251EDoibiYRILjCmxBvvcb4meofCmx1vdnNcR9gyildy5vOHASpOKMsn42CugxUvcwK5eu1g==
 
 "@typescript-eslint/eslint-plugin@^4.18.0":
   version "4.29.2"
@@ -3747,6 +3771,14 @@ graphql-helix@^1.7.0:
   resolved "https://registry.yarnpkg.com/graphql-helix/-/graphql-helix-1.7.0.tgz#452b2792447dddd259cdf4d6731da2171c8a7e49"
   integrity sha512-CUqBZL0e/ivPnqFguzWCmMzPTjYXvak2465SsIiAYt0C2yZa4kjzQjB/JIF7YKHCsP8VrJwA29HXmYOJzPAe3g==
 
+graphql-middleware@^6.1.4:
+  version "6.1.4"
+  resolved "https://registry.yarnpkg.com/graphql-middleware/-/graphql-middleware-6.1.4.tgz#1b4dd66195477046282acc8937cb5fca32b6bfd5"
+  integrity sha512-nDgNfY+wf4e6xAKsG3vLKcVfnGbv7iBDtFdkBu600di9SauAefSwLERuIvOvcHM2xmnSQDgH8Rl9u4qUSvQr/Q==
+  dependencies:
+    "@graphql-tools/delegate" "^8.1.1"
+    "@graphql-tools/schema" "^8.1.2"
+
 graphql-request@^3.3.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/graphql-request/-/graphql-request-3.5.0.tgz#7e69574e15875fb3f660a4b4be3996ecd0bbc8b7"
@@ -3762,6 +3794,15 @@ graphql-scalars@^1.10.0:
   integrity sha512-LONlj8FfhA2iGpkZJWf5e4PVAHXxnZEHSOEvowLYvNXl/TNnhIck8VmE+lren/aa6GKrG+lZufo5lgnyjxcF6g==
   dependencies:
     tslib "~2.2.0"
+
+graphql-shield@^7.5.0:
+  version "7.5.0"
+  resolved "https://registry.yarnpkg.com/graphql-shield/-/graphql-shield-7.5.0.tgz#aa3af226946946dfadac33eccc6cbe7fec6e9000"
+  integrity sha512-T1A6OreOe/dHDk/1Qg3AHCrKLmTkDJ3fPFGYpSOmUbYXyDnjubK4J5ab5FjHdKHK5fWQRZNTvA0SrBObYsyfaw==
+  dependencies:
+    "@types/yup" "0.29.11"
+    object-hash "^2.0.3"
+    yup "^0.31.0"
 
 graphql-tag@^2.11.0:
   version "2.12.5"
@@ -4727,6 +4768,11 @@ locate-path@^5.0.0:
   dependencies:
     p-locate "^4.1.0"
 
+lodash-es@^4.17.11:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
+
 lodash.castarray@^4.4.0:
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/lodash.castarray/-/lodash.castarray-4.4.0.tgz#c02513515e309daddd4c24c60cfddcf5976d9115"
@@ -5308,7 +5354,7 @@ object-assign@^4.1.0, object-assign@^4.1.1:
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
 
-object-hash@^2.0.1, object-hash@^2.1.1, object-hash@^2.2.0:
+object-hash@^2.0.1, object-hash@^2.0.3, object-hash@^2.1.1, object-hash@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.2.0.tgz#5ad518581eefc443bd763472b8ff2e9c2c0d54a5"
   integrity sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==
@@ -5886,6 +5932,11 @@ prop-types@^15.7.2:
     loose-envify "^1.4.0"
     object-assign "^4.1.1"
     react-is "^16.8.1"
+
+property-expr@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/property-expr/-/property-expr-2.0.4.tgz#37b925478e58965031bb612ec5b3260f8241e910"
+  integrity sha512-sFPkHQjVKheDNnPvotjQmm3KD3uk1fWKUN7CrpdbwmUx3CrG3QiM8QpTSimvig5vTXmTvjz7+TDvXOI9+4rkcg==
 
 public-encrypt@^4.0.0:
   version "4.0.3"
@@ -7010,6 +7061,11 @@ toidentifier@1.0.0:
   resolved "https://registry.yarnpkg.com/toidentifier/-/toidentifier-1.0.0.tgz#7e1be3470f1e77948bc43d94a3c8f4d7752ba553"
   integrity sha512-yaOH/Pk/VEhBWWTlhI+qXxDFXlejDGcQipMlyxda9nthulaxLZUNcUqFxokp0vcYnvteJln5FNQDRrxj3YcbVw==
 
+toposort@^2.0.2:
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/toposort/-/toposort-2.0.2.tgz#ae21768175d1559d48bef35420b2f4962f09c330"
+  integrity sha1-riF2gXXRVZ1IvvNUILL0li8JwzA=
+
 tr46@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-1.0.1.tgz#a8b13fd6bfd2489519674ccde55ba3693b706d09"
@@ -7533,3 +7589,14 @@ yocto-queue@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/yocto-queue/-/yocto-queue-0.1.0.tgz#0294eb3dee05028d31ee1a5fa2c556a6aaf10a1b"
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
+
+yup@^0.31.0:
+  version "0.31.1"
+  resolved "https://registry.yarnpkg.com/yup/-/yup-0.31.1.tgz#0954cb181161f397b804346037a04f8a4b31599e"
+  integrity sha512-Lf6648jDYOWR75IlWkVfwesPyW6oj+50NpxlKvsQlpPsB8eI+ndI7b4S1VrwbmeV9hIZDu1MzrlIL4W+gK1jPw==
+  dependencies:
+    "@babel/runtime" "^7.10.5"
+    lodash "^4.17.20"
+    lodash-es "^4.17.11"
+    property-expr "^2.0.4"
+    toposort "^2.0.2"
