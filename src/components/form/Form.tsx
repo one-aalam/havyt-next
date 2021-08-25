@@ -3,6 +3,7 @@ import { useForm, FormProvider, SubmitHandler, UseFormProps } from 'react-hook-f
 import Input from './Input'
 import Textarea from './Textarea'
 import Select from './Select'
+import FileInput from './FileInput'
 
 interface FormProps<T> extends Omit<FormHTMLAttributes<HTMLFormElement>, "onSubmit"> {
     form: UseFormProps<T>
@@ -26,3 +27,4 @@ export function Form<T>({ form, children, onSubmit, ...rest }: FormProps<T>) {
 Form.Input = Input
 Form.Textarea = Textarea
 Form.Select = Select
+Form.FileInput = FileInput
