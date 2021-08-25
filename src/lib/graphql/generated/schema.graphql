@@ -31,6 +31,9 @@ type Query {
   allRecipeCategories: [RecipeCategory!]
   allRecipes(skip: Int, take: Int): [Recipe!]!
 
+  """Retrieve the logged-in user"""
+  me: User
+
   """Retrieve single recipe by the provided ID"""
   recipe(id: ID!): Recipe
 
@@ -113,4 +116,19 @@ input RecipeUpdateInput {
   source: String
   tags: [String]
   userId: ID
+}
+
+type User {
+  avatar: String
+  createdAt: DateTime!
+  email: String
+  id: ID!
+  recipes: [Recipe!]!
+  role: UserRole!
+  username: String!
+}
+
+enum UserRole {
+  ADMIN
+  USER
 }

@@ -24,7 +24,7 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  Recipe Recipe[] @relation("_RecipeToSubmitter")
+  recipes Recipe[] @relation("_RecipeToSubmitter")
 }
 
 enum UserRole {
