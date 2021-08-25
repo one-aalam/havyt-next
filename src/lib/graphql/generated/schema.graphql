@@ -46,6 +46,7 @@ type Recipe {
   description: String!
   directions: [String!]!
   id: ID!
+  imageUrl: String!
   ingredients: [String!]!
   name: String!
   prepTime: Int!
@@ -85,6 +86,7 @@ input RecipeCreateInput {
   cookingTime: Int!
   description: String
   directions: [String!]
+  imageUrl: String
   ingredients: [String!]
   name: String!
   prepTime: Int
@@ -101,6 +103,7 @@ input RecipeUpdateInput {
   cookingTime: Int
   description: String
   directions: [String]
+  imageUrl: String
   ingredients: [String]
   name: String
   prepTime: Int

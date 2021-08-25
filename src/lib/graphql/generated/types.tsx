@@ -103,6 +103,7 @@ export type Recipe = {
   cookingTime: Scalars['Int'];
   cuisine: RecipeCategory;
   course: RecipeCategory;
+  imageUrl: Scalars['String'];
   source?: Maybe<Scalars['String']>;
   tags: Array<Scalars['String']>;
   createdAt: Scalars['DateTime'];
@@ -146,6 +147,7 @@ export type RecipeCreateInput = {
   cookingTime: Scalars['Int'];
   recipeCuisineId: Scalars['ID'];
   recipeCourseId: Scalars['ID'];
+  imageUrl?: Maybe<Scalars['String']>;
   source?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   userId: Scalars['ID'];
@@ -162,31 +164,32 @@ export type RecipeUpdateInput = {
   cookingTime?: Maybe<Scalars['Int']>;
   recipeCuisineId?: Maybe<Scalars['ID']>;
   recipeCourseId?: Maybe<Scalars['ID']>;
+  imageUrl?: Maybe<Scalars['String']>;
   source?: Maybe<Scalars['String']>;
   tags?: Maybe<Array<Maybe<Scalars['String']>>>;
   userId?: Maybe<Scalars['ID']>;
 };
 
-export type Recipe_RecipeFragment = { __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } };
+export type Recipe_RecipeFragment = { __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, imageUrl: string, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } };
 
 export type GetAllRecipesQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetAllRecipesQuery = { __typename?: 'Query', allRecipes: Array<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
+export type GetAllRecipesQuery = { __typename?: 'Query', allRecipes: Array<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, imageUrl: string, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
 
 export type GetRecipeQueryVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type GetRecipeQuery = { __typename?: 'Query', recipe?: Maybe<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
+export type GetRecipeQuery = { __typename?: 'Query', recipe?: Maybe<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, imageUrl: string, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
 
 export type CreateRecipeMutationVariables = Exact<{
   data: RecipeCreateInput;
 }>;
 
 
-export type CreateRecipeMutation = { __typename?: 'Mutation', createRecipe?: Maybe<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
+export type CreateRecipeMutation = { __typename?: 'Mutation', createRecipe?: Maybe<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, imageUrl: string, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
 
 export type UpdateRecipeMutationVariables = Exact<{
   id: Scalars['ID'];
@@ -194,14 +197,14 @@ export type UpdateRecipeMutationVariables = Exact<{
 }>;
 
 
-export type UpdateRecipeMutation = { __typename?: 'Mutation', updateRecipe?: Maybe<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
+export type UpdateRecipeMutation = { __typename?: 'Mutation', updateRecipe?: Maybe<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, imageUrl: string, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
 
 export type DeleteRecipeMutationVariables = Exact<{
   id: Scalars['ID'];
 }>;
 
 
-export type DeleteRecipeMutation = { __typename?: 'Mutation', deleteRecipe?: Maybe<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
+export type DeleteRecipeMutation = { __typename?: 'Mutation', deleteRecipe?: Maybe<{ __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, imageUrl: string, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } }> };
 
 export type GetAllRecipeCategoriesQueryVariables = Exact<{ [key: string]: never; }>;
 
@@ -226,6 +229,7 @@ export const Recipe_RecipeFragmentDoc = gql`
     id
     name
   }
+  imageUrl
 }
     `;
 export const GetAllRecipesDocument = gql`

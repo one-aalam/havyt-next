@@ -20,6 +20,7 @@ const RECIPE_FRAGMENT = gql`
         id
         name
     }
+    imageUrl
   }
 `
 
