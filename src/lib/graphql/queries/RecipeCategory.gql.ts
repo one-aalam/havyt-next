@@ -6,6 +6,7 @@ export const RECIPE_CATEGORIES_QUERY = gql`
     allRecipeCategories {
         id
         name
+        type
     }
   }
 `
