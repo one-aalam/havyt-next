@@ -1,5 +1,7 @@
 import { NextPage } from 'next'
 import { useState } from 'react'
+import { withPageAuthRequired } from '@auth0/nextjs-auth0'
+
 import Layout from '~/components/Layout'
 import RecipeForm from '~/components/recipes/RecipeForm'
 import withUrqlClient from '~/lib/graphql/client'
@@ -41,3 +43,5 @@ const RecipeNewPage: NextPage = () => {
 }
 
 export default withUrqlClient(RecipeNewPage)
+
+export const getServerSideProps = withPageAuthRequired()

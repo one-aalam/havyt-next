@@ -25,7 +25,7 @@ const IndexPage: NextPage<NextAppPageProps> = ({ meta }) => {
             Get started by editing{' '}
             <code className={styles.code}>src/pages/index.tsx</code>
           </p>
-
+          <a href="/api/auth/login">Login</a>
           <div className={styles.grid}>
             <a href="https://nextjs.org/docs" className={styles.card}>
               <FaDochub className="text-4xl mb-2" />
