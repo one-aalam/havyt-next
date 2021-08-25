@@ -9,7 +9,6 @@ import { schema } from '~/lib/graphql/schema'
 import { createContext } from '~/lib/graphql/context'
 
 const graphql = async (req: NextApiRequest, res: NextApiResponse) => {
-
     // We don't wanna pass everything we're getting to the GQL processor (Helix). Let's do a bit of normalization
     const gqlReq = {
         body: req.body,
@@ -22,7 +21,6 @@ const graphql = async (req: NextApiRequest, res: NextApiResponse) => {
     if (shouldRenderGraphiQL(gqlReq)) {
         res.send(renderGraphiQL({ endpoint: '/api/graphql' }));
     } else {
-
         // No? Let's extract the needed params for the GQL processor (Helix)
         const { operationName, query, variables } = getGraphQLParameters(gqlReq);
 
@@ -33,7 +31,10 @@ const graphql = async (req: NextApiRequest, res: NextApiResponse) => {
             variables,
             operationName,
             request: gqlReq,
-            contextFactory: () => createContext()
+            contextFactory: () => createContext({
+                req,
+                res
+            })
         });
 
         // HTTP response? No Websocket? No SSE?
