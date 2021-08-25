@@ -5,31 +5,19 @@ import Textarea from './Textarea'
 import Select from './Select'
 
 interface FormProps<T> extends Omit<FormHTMLAttributes<HTMLFormElement>, "onSubmit"> {
-    form: UseFormProps<T>;
-    children: ReactElement | ReactElement[];
-    onSubmit: SubmitHandler<T>;
+    form: UseFormProps<T>
+    children: ReactElement | ReactElement[]
+    onSubmit: SubmitHandler<T>
 }
 
 export function Form<T>({ form, children, onSubmit, ...rest }: FormProps<T>) {
   const methods = useForm<T>(form)
-  const { handleSubmit, register } = methods
+  const { handleSubmit } = methods
 
   return (
     <FormProvider {...methods}>
         <form {...rest} onSubmit={handleSubmit(onSubmit)}>
-        {Array.isArray(children)
-            ? children.map((child) => {
-                return child.props.name
-                ? React.createElement(child.type, {
-                    ...{
-                        ...child.props,
-                        register,
-                        key: child.props.name
-                    }
-                    })
-                : child;
-            })
-            : children}
+            {children}
         </form>
     </FormProvider>
   );

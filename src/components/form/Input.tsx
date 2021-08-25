@@ -9,7 +9,7 @@ interface InputProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'id' | 
 }
 
 export default function Input({ name, label, config, ...rest }: InputProps) {
-    const { register } = useFormContext();
+    const { register, formState } = useFormContext();
     return (<div className="form-control">
         {label && (
             <label htmlFor={name} className="label">
@@ -20,5 +20,8 @@ export default function Input({ name, label, config, ...rest }: InputProps) {
         id={name} placeholder={label} className="input input-primary input-bordered" defaultValue=""
         {...register(name, config)}
         {...rest} />
+        {/* {formState.errors[name] && (
+            <small className="mt-1 text-sm text-red-600">{formState.errors[name].message}</small>
+        )} */}
     </div>)
 }
