@@ -73,6 +73,8 @@ export type Query = {
   allRecipes: Array<Recipe>;
   /** Retrieve single recipe by the provided ID */
   recipe?: Maybe<Recipe>;
+  /** Retrieve the logged-in user */
+  me?: Maybe<User>;
 };
 
 
@@ -170,6 +172,22 @@ export type RecipeUpdateInput = {
   userId?: Maybe<Scalars['ID']>;
 };
 
+export type User = {
+  __typename?: 'User';
+  id: Scalars['ID'];
+  username: Scalars['String'];
+  email?: Maybe<Scalars['String']>;
+  avatar?: Maybe<Scalars['String']>;
+  role: UserRole;
+  createdAt: Scalars['DateTime'];
+  recipes: Array<Recipe>;
+};
+
+export enum UserRole {
+  User = 'USER',
+  Admin = 'ADMIN'
+}
+
 export type Recipe_RecipeFragment = { __typename?: 'Recipe', id: string, name: string, description: string, ingredients: Array<string>, directions: Array<string>, serves: number, prepTime: number, cookingTime: number, imageUrl: string, cuisine: { __typename?: 'RecipeCategory', id: string, name: string }, course: { __typename?: 'RecipeCategory', id: string, name: string } };
 
 export type GetAllRecipesQueryVariables = Exact<{ [key: string]: never; }>;
@@ -211,6 +229,13 @@ export type GetAllRecipeCategoriesQueryVariables = Exact<{ [key: string]: never;
 
 export type GetAllRecipeCategoriesQuery = { __typename?: 'Query', allRecipeCategories?: Maybe<Array<{ __typename?: 'RecipeCategory', id: string, name: string, type?: Maybe<RecipeCategoryType> }>> };
 
+export type User_UserFragment = { __typename?: 'User', id: string, username: string, email?: Maybe<string>, role: UserRole };
+
+export type GetMeQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetMeQuery = { __typename?: 'Query', me?: Maybe<{ __typename?: 'User', id: string, username: string, email?: Maybe<string>, role: UserRole }> };
+
 export const Recipe_RecipeFragmentDoc = gql`
     fragment Recipe_recipe on Recipe {
   id
@@ -230,6 +255,14 @@ export const Recipe_RecipeFragmentDoc = gql`
     name
   }
   imageUrl
+}
+    `;
+export const User_UserFragmentDoc = gql`
+    fragment User_user on User {
+  id
+  username
+  email
+  role
 }
     `;
 export const GetAllRecipesDocument = gql`
@@ -299,4 +332,15 @@ export const GetAllRecipeCategoriesDocument = gql`
 
 export function useGetAllRecipeCategoriesQuery(options: Omit<Urql.UseQueryArgs<GetAllRecipeCategoriesQueryVariables>, 'query'> = {}) {
   return Urql.useQuery<GetAllRecipeCategoriesQuery>({ query: GetAllRecipeCategoriesDocument, ...options });
+};
+export const GetMeDocument = gql`
+    query GetMe {
+  me {
+    ...User_user
+  }
+}
+    ${User_UserFragmentDoc}`;
+
+export function useGetMeQuery(options: Omit<Urql.UseQueryArgs<GetMeQueryVariables>, 'query'> = {}) {
+  return Urql.useQuery<GetMeQuery>({ query: GetMeDocument, ...options });
 };
