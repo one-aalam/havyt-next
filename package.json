@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "npm run generate && next build",
     "start": "next start",
+    "build:ci": "npm run migrate:deploy && npm run generate && next build",
     "type-check": "tsc --project tsconfig.json --pretty --noEmit",
     "lint": "eslint --ext js,jsx,ts,tsx --fix --ignore-path .gitignore .",
     "prettier": "prettier --ignore-path .gitignore --write \"**/*.+(js|json|ts|tsx)\"",
@@ -18,6 +19,11 @@
     "generate:nexus": "npm run ts-node --transpile-only ./src/lib/graphql/schema",
     "generate:client-types": "graphql-codegen --config codegen.yml",
     "dev:client-types": "graphql-codegen --config codegen.yml --watch",
+    "db:seed": "prisma db seed --preview-feature",
+    "db:push": "prisma db push --preview-feature",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:reset": "prisma migrate reset",
     "postinstall": "npm run generate"
   },
   "dependencies": {
