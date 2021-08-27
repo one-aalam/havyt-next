@@ -34,7 +34,7 @@ const RecipeNewPage: NextPage<RecipeNewPageProps> = ({ user }) => {
   return (
     <Layout>
       <div className="w-full">
-        <main className="w-2/4 mx-auto">
+        <main className="w-2/4 mx-auto" data-id={user.id}>
             <h1>Create New Recipe</h1>
            <RecipeForm<RecipeCreateInput> defaultValues={{}} submitText="Create Recipe" submitting={submitting} onSubmit={onSubmit} />
         </main>
