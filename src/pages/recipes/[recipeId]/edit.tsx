@@ -11,8 +11,6 @@ import { useUpdateRecipeMutation , RecipeUpdateInput, useGetRecipeQuery } from '
 import {  useMessage } from '~/lib/message'
 
 
-const USER_ID = "00c5b3d4-eb87-4eaa-8a49-f55bb75c410b" // to-be-filled-in-auth-module  (put any valid user Id)
-
 type Modify<T, R> = Omit<T, keyof R> & R;
 type RecipeFormUpdateMods = {
     ingredients?: string
@@ -55,7 +53,7 @@ const RecipeEditPage: NextPage = () => {
       <div className="w-full">
         <main className="w-2/4 mx-auto">
             <h1>Update Recipe</h1>
-            <RecipeForm<RecipeFormUpdateInput> defaultValues={{ ...toRecipeDefaultValues(data.recipe), userId: USER_ID }} submitText="Update Recipe" submitting={submitting} onSubmit={onSubmit} />
+            <RecipeForm<RecipeFormUpdateInput> defaultValues={{ ...toRecipeDefaultValues(data.recipe) }} submitText="Update Recipe" submitting={submitting} onSubmit={onSubmit} />
         </main>
       </div>
     </Layout>

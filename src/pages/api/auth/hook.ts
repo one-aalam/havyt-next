@@ -20,7 +20,7 @@ const auth0ActionHandler = async (req: Auth0CustomActionOnRegRequest, res: NextA
   }
   if (user) {
     await prisma.user.create({
-      data: { username: user.nickname || user.email.split('@')[0] , email: user.email, avatar: user.picture },
+      data: { id: user.sub, username: user.nickname || user.email.split('@')[0] , email: user.email, avatar: user.picture },
     });
     return res.status(200).json({
       message: `User with email: ${user.email} has been created successfully!`,
