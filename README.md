@@ -1,4 +1,4 @@
-# Rycyp
+# Havyt - Next
 Boilerplate to quckly get up and running with Next.js with
 - __Typescript__ as the language choice
 - __Tailwind CSS__ for quick styling without getting out of your HTML
