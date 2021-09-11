@@ -1,4 +1,4 @@
-# Next.js Starter Kit
+# Rycyp
 Boilerplate to quckly get up and running with Next.js with
 - __Typescript__ as the language choice
 - __Tailwind CSS__ for quick styling without getting out of your HTML
@@ -9,7 +9,44 @@ Boilerplate to quckly get up and running with Next.js with
 
 and pre-made
 - __Message/Alerts__ `coz who don't uses one?
-- __Authentication system with Supabase__ In the [with-supabase](https://github.com/one-aalam/next-starter-kit/tree/auth-supabase) branch
+
+## Configure the Railway App
+- https://docs.railway.app/cli/installation
+-`railway login`
+- `railway init`
+```
+Starting Point: Empty Project
+✔ Enter project name: rycyp█
+✔ Environment: production
+```
+Go to URL: `https://railway.app/project/[project-id]/setup
+- `railway link [project-id]`
+Go to PostgreSQL plugin page, the `Connect` tab, and copy the Postgres Connection URL
+
+- `railway run` -> `railway up`
+
+
+## Setup Prisma
+- yarn add --dev prisma
+- ./node_modules/.bin/prisma init
+```
+Your Prisma schema was created at prisma/schema.prisma
+  You can now open it in your favorite editor.
+
+Next steps:
+1. Set the DATABASE_URL in the .env file to point to your existing database. If your database has no tables yet, read https://pris.ly/d/getting-started
+2. Set the provider of the datasource block in schema.prisma to match your database: postgresql, mysql, sqlite, sqlserver (Preview) or mongodb (Preview).
+3. Run prisma db pull to turn your database schema into a Prisma schema.
+4. Run prisma generate to generate the Prisma Client. You can then start querying your database.
+```
+- Open the `.env` file and place the connecting string(Postgres Connection URL) against `DATABASE_URL`. Prisma is smart enough to use this by its special annotation in the `/prisma/schema.prisma` file `env("DATABASE_URL")`
+- Keep `postgresql` as the DB type
+
+## Seed the Database
+`npx prisma db seed --preview-feature`
+
+## See the seeded data
+npx prisma studio
 
 ## Getting Started
 
