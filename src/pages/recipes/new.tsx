@@ -24,7 +24,7 @@ const RecipeNewPage: NextPage<RecipeNewPageProps> = ({ user }) => {
                 serves: parseInt(data.serves), prepTime: parseInt(data.prepTime || 0), cookingTime: parseInt(data.cookingTime),
                 ingredients: data.ingredients.split('\n'),
                 directions: data.directions.split('\n'),
-                userId: user.id
+                userId: user.sub
             }
         })
         setSubmitting(false)
